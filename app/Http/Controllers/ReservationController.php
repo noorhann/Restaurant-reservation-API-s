@@ -6,6 +6,7 @@ use App\Http\Requests\CheckAvailabiltyRequest;
 use App\Models\Reservation;
 use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\UpdateReservationRequest;
+use App\Http\Resources\TableListResource;
 use App\Services\ReservationService;
 
 class ReservationController extends Controller
@@ -37,13 +38,14 @@ class ReservationController extends Controller
     public function checkAvailability(CheckAvailabiltyRequest $request)
     {
         $availableTables = $this->reservationService->checkAvailability($request->from_time,$request->to_time, $request->guestsNo);
-
-        if (!empty($availableTables)) {
+        
+        if ($availableTables) 
+        {
             return apiResponse(
                 true,
                 'There are tables available', 
                 200,
-                $availableTables
+                TableListResource::collection($availableTables)
             );
         } 
         else {

@@ -14,7 +14,7 @@ class TableFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'capacity' => $this->faker->numberBetween(2, 8),
         ];
     }
 }

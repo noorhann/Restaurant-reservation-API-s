@@ -6,6 +6,7 @@ use App\Http\Resources\TableListResource;
 use App\Models\Table;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ReservationService
 {
@@ -19,28 +20,38 @@ class ReservationService
      */
 
     public function checkAvailability($from_time,$to_time, $guests){
-        
-        $allTables = Table::all();
 
-        $availableTables = [];
+        try {
+            $allTables = Table::all();
 
-        foreach ($allTables as $table) {
+            $availableTables = [];
 
-            $isTableAvailable = !Reservation::where('table_id', $table->id)
-                ->where('to_time', '>=', $from_time)
-                ->where('from_time', '<=', $to_time)
-                ->exists();
+            foreach ($allTables as $table) {
 
-            $isCapacitySufficient = $guests <= $table->capacity;
+                $isTableAvailable = !Reservation::where('table_id', $table->id)
+                    ->where('to_time', '>=', $from_time)
+                    ->where('from_time', '<=', $to_time)
+                    ->exists();
 
-            if ($isTableAvailable && $isCapacitySufficient) {
+                $isCapacitySufficient = $guests <= $table->capacity;
 
-                $availableTables[] = $table;
+                if ($isTableAvailable && $isCapacitySufficient) {
 
+                    $availableTables[] = $table;
+                }
             }
-        }
 
-        return TableListResource::collection($availableTables);
+            return $availableTables;
+        } catch (\Throwable $th) {
+            Log::error($th);
+            return apiResponse(
+                false,
+                'something went wrong',
+                500,
+            );
+        }
+        
+     
 
     }
 
@@ -55,13 +66,21 @@ class ReservationService
 
     private function checkTableAvailable($from_time, $to_time, $tableId)
     {
-       
-        $isTableAvailable = Reservation::where('table_id', $tableId)
-                ->where('to_time', '>=', $from_time)
-                ->where('from_time', '<=', $to_time)
-                ->doesntExist();
-
-        return $isTableAvailable;
+        try {
+            $isTableAvailable = Reservation::where('table_id', $tableId)
+                    ->where('to_time', '>=', $from_time)
+                    ->where('from_time', '<=', $to_time)
+                    ->doesntExist();
+    
+            return $isTableAvailable;
+        } catch (\Throwable $th) {
+            Log::error($th);
+            return apiResponse(
+                false,
+                'something went wrong',
+                500,
+            );
+        }
  
     }
 
@@ -77,24 +96,34 @@ class ReservationService
     public function store(Request $request)
     {
 
-        $tableAvailability = $this->checkTableAvailable($request->from_time, $request->to_time, $request->table_id);
-        
-        if ($tableAvailability) {
-            $reservation = Reservation::create($request->all());
-
+        try {
+            $tableAvailability = $this->checkTableAvailable($request->from_time, $request->to_time, $request->table_id);
+            
+            if ($tableAvailability) {
+                $reservation = Reservation::create($request->all());
+    
+                return apiResponse(
+                    true,
+                    'Your reservation created successfully',
+                    201,
+                    $reservation,
+                );
+            }
+    
             return apiResponse(
-                true,
-                'Your reservation created successfully',
-                201,
-                $reservation,
+                false,
+                'This table is unavailable',
+                404,  
+            );
+            
+        } catch (\Throwable $th) {
+            Log::error($th);
+            return apiResponse(
+                false,
+                'something went wrong',
+                500,
             );
         }
-
-        return apiResponse(
-            false,
-            'This table is unavailable',
-            404,  
-        );
    
     }
 }

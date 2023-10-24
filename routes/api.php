@@ -29,7 +29,7 @@ Route::group(['prefix' => 'menu/'], function () {
     Route::get('/', [MealController::class, 'index']);
 });
 Route::group(['middleware' => ['auth']], function () {
-
+    
     Route::group(['prefix' => 'reservation/'], function () {
         Route::post('/checkAvailabilty', [ReservationController::class, 'checkAvailability']);
         Route::post('/store', [ReservationController::class, 'store']);
