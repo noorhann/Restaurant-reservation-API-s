@@ -1,0 +1,779 @@
+{
+	"info": {
+		"_postman_id": "1a2c6416-c193-4be5-8c1b-37d6ad62acf2",
+		"name": "mini restaurant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14470294",
+		"_collection_link": "https://gold-star-631797.postman.co/workspace/Orderking~5e1a994d-afc9-4e11-a7cc-f0c503ad288d/collection/14470294-1a2c6416-c193-4be5-8c1b-37d6ad62acf2?action=share&source=collection_link&creator=14470294"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "eloy.crooks@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}auth/login",
+							"host": [
+								"{{url}}auth"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "eliza26@example.net",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}auth/login",
+									"host": [
+										"{{url}}auth"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 14:02:07 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 14:02:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.29"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"You Logged in successfully\",\n    \"data\": {\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"Prof. Ryley Huels\",\n            \"email\": \"eliza26@example.net\"\n        },\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY5ODE1NjEyNywiZXhwIjoxNjk4MTU5NzI3LCJuYmYiOjE2OTgxNTYxMjcsImp0aSI6InhQZnFaTWV3RTZnZUVUVzIiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.c6GLHaFpqQGytpHzUAlQb0kUE-JNBZNEUWQEBcDDQXg\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "chadd80@example.net",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "chadd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}auth/create",
+							"host": [
+								"{{url}}auth"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}auth/logout",
+							"host": [
+								"{{url}}auth"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reservation",
+			"item": [
+				{
+					"name": "check availabilty",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "from_time",
+									"value": "2023-10-23 15:00:00",
+									"type": "text"
+								},
+								{
+									"key": "guestsNo",
+									"value": "50",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "to_time",
+									"value": "2023-10-23 16:00:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}reservation/checkAvailabilty",
+							"host": [
+								"{{url}}reservation"
+							],
+							"path": [
+								"checkAvailabilty"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "check availabilty not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "from_time",
+											"value": "2023-10-23 15:00:00",
+											"type": "text"
+										},
+										{
+											"key": "guestsNo",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "to_time",
+											"value": "2023-10-23 16:00:00",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}reservation/checkAvailabilty",
+									"host": [
+										"{{url}}reservation"
+									],
+									"path": [
+										"checkAvailabilty"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 16:49:28 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 16:49:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.29"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"No tables are available.\",\n    \"data\": null\n}"
+						},
+						{
+							"name": "check availabilty",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "from_time",
+											"value": "2023-10-23 15:00:00",
+											"type": "text"
+										},
+										{
+											"key": "guestsNo",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "to_time",
+											"value": "2023-10-23 16:00:00",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}reservation/checkAvailabilty",
+									"host": [
+										"{{url}}reservation"
+									],
+									"path": [
+										"checkAvailabilty"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 16:49:52 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 16:49:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.29"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"There are tables available\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"capacity\": 7\n        },\n        {\n            \"id\": 3,\n            \"capacity\": 8\n        },\n        {\n            \"id\": 4,\n            \"capacity\": 6\n        },\n        {\n            \"id\": 5,\n            \"capacity\": 6\n        },\n        {\n            \"id\": 6,\n            \"capacity\": 6\n        },\n        {\n            \"id\": 7,\n            \"capacity\": 5\n        },\n        {\n            \"id\": 9,\n            \"capacity\": 7\n        },\n        {\n            \"id\": 11,\n            \"capacity\": 5\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "table_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "customer_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "from_time",
+									"value": "2023-10-23 15:30:00",
+									"type": "text"
+								},
+								{
+									"key": "to_time",
+									"value": "2023-10-23 16:30:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}reservation/store",
+							"host": [
+								"{{url}}reservation"
+							],
+							"path": [
+								"store"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "meal",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}menu",
+							"host": [
+								"{{url}}menu"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "table_id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "reservation_id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "customer_id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "meal_id[1]",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "meal_id[2]",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "meal_id[1]",
+									"value": "7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}order/create",
+							"host": [
+								"{{url}}order"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "table_id",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "reservation_id",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "customer_id",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "meal_id[1]",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "meal_id[2]",
+											"value": "6",
+											"type": "text"
+										},
+										{
+											"key": "meal_id[1]",
+											"value": "7",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}order/create",
+									"host": [
+										"{{url}}order"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 18:28:05 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 18:28:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.29"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Your order created successfully\",\n    \"data\": {\n        \"table_id\": \"4\",\n        \"customer_id\": \"4\",\n        \"reservation_id\": \"4\",\n        \"user_id\": 4,\n        \"updated_at\": \"2023-10-24T18:28:05.000000Z\",\n        \"created_at\": \"2023-10-24T18:28:05.000000Z\",\n        \"id\": 1,\n        \"total\": 322.0109\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "checkout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "checkoutMethod",
+									"value": "tax_and_service",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}order/checkout/4",
+							"host": [
+								"{{url}}order"
+							],
+							"path": [
+								"checkout",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "checkout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "checkoutMethod",
+											"value": "tax_and_service",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}order/checkout/4",
+									"host": [
+										"{{url}}order"
+									],
+									"path": [
+										"checkout",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 10:33:28 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 10:33:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.29"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Invoice\",\n    \"data\": {\n        \"id\": 4,\n        \"table_id\": 1,\n        \"reservation_id\": 1,\n        \"total\": 360,\n        \"total_includ_tax_service\": 414,\n        \"waiter\": {\n            \"id\": 1,\n            \"name\": \"chadd\",\n            \"email\": \"chadd80@example.net\"\n        },\n        \"customer\": \"sdfgh\",\n        \"Items\": [\n            {\n                \"id\": 1,\n                \"meal\": \"trgbf\",\n                \"price\": 150\n            },\n            {\n                \"id\": 2,\n                \"meal\": \"test\",\n                \"price\": 210\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
