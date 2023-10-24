@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Meal;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class MealSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class MealSeeder extends Seeder
      */
     public function run()
     {
-        Meal::factory()->count(20)->create();
+        User::factory()->count(10)->create();
     }
 }
